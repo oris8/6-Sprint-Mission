@@ -14,6 +14,14 @@
   background-color: #1967d6;
 }
 
+.btn:active {
+  background-color: #1251aa;
+}
+
+.btn:disabled {
+  background-color: #9ca3af;
+}
+
 .btn-small {
   width: 128px;
   height: 48px;
@@ -26,14 +34,6 @@
   height: 56px;
   border-radius: 40px;
   font-size: 20px;
-}
-
-.btn--click {
-  background-color: #1251aa;
-}
-
-.btn--inactive {
-  background-color: #9ca3af;
 }
 
 /* input 공통 */
