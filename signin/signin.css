@@ -3,7 +3,6 @@ body {
   justify-content: center;
 }
 
-.signup-container,
 .signin-container {
   width: 640px;
 }
@@ -116,7 +115,6 @@ form button .active {
     font-size: 8px;
   }
 
-  .signup-container,
   .signin-container {
     width: 100%;
     max-width: 400px;
