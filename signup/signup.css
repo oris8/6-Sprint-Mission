@@ -1,27 +1,24 @@
-body {
-  display: flex;
-  justify-content: center;
-}
-
-.signup-container {
-  width: 640px;
+.form-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 /* logo */
-.logo {
+.form-container__logo {
   display: flex;
   justify-content: center;
   margin: 60px 0 40px 0;
 }
 
-.logo img {
+.form-container__logo img {
   width: 396px;
   height: 132px;
 }
 
 /* form */
 
-.user-form button {
+.user-form__btn {
   width: 640px;
   height: 56px;
   background-color: #9ca3af;
@@ -31,7 +28,7 @@ body {
 
 /* input */
 
-.user-form label {
+.user-form__label {
   display: block;
   margin-bottom: 16px;
   font-weight: 700;
@@ -40,31 +37,34 @@ body {
   color: var(--color-cool-gray-800);
 }
 
-.user-form input {
+.user-form__input-field {
   width: 640px;
   margin-bottom: 24px;
 }
 
-.user-form input:focus {
+.user-form__input:focus {
   outline: #3692ff solid 1.5px;
 }
 
 .user-form i {
   position: absolute;
-  top: 53.5px;
-  right: 16px;
+  /* top: 53.5px;
+  right: 16px; */
+  top: 0;
+  right: 0;
 }
 
-form button .active {
+.user-form__btn:active {
   background-color: var(--color-blue);
   color: #fff;
 }
 
-/* easy-signin-section */
+/* social-login-section */
 
-.easy-signin {
+.social-login {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 640px;
   height: 74px;
   padding: 16px 23px;
@@ -74,25 +74,20 @@ form button .active {
   color: var(--color-cool-gray-800);
 }
 
-.easy-signin span {
-  display: flex;
-  align-items: center;
+.social-login span {
   font-weight: 500;
   font-size: 16px;
   color: var(--color-cool-gray-800);
 }
 
-.easy-signin a {
-  margin-right: 16px;
+.social-login__btn-group {
+  display: flex;
+  gap: 16px;
 }
 
-.easy-signin a:last-of-type {
-  margin-right: 0;
-}
+/* already-member */
 
-/* bottom */
-
-.bottom {
+.already-member {
   display: flex;
   justify-content: center;
   margin-top: 24px;
@@ -103,7 +98,7 @@ form button .active {
   color: var(--color-cool-gray-800);
 }
 
-.bottom a {
+.already-member a {
   margin-left: 8px;
   color: var(--color-blue);
   text-decoration: underline;
@@ -115,35 +110,35 @@ form button .active {
     font-size: 8px;
   }
 
-  .signup-container {
+  .form-container {
     width: 100%;
     max-width: 400px;
     margin: 24px 16px auto 16px;
   }
 
-  .logo {
+  .form-container__logo {
     margin-top: 0;
     margin-bottom: 24px;
   }
 
-  .logo img {
+  .form-container__logo img {
     width: 198px;
     height: 66px;
   }
 
   .user-form,
-  .user-form input,
-  .user-form button,
-  .easy-signin {
+  .user-form__input,
+  .user-form__btn,
+  .social-login {
     width: 100%;
   }
 
-  .user-form label {
+  .user-form__label {
     font-size: 14px;
     margin-bottom: 8px;
   }
 
-  .user-form input {
+  .user-form__input {
     margin-bottom: 16px;
   }
 
