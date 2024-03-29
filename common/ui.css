@@ -106,6 +106,26 @@ input::placeholder {
 
 /* input option */
 
+i.eye-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url(../public/assets/icon/eye.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+i.eye-off {
+  width: 24px;
+  height: 24px;
+  background-image: url(../public/assets/icon/eye-off.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 .input--border-red {
   border: 1px solid var(--color-red);
 }

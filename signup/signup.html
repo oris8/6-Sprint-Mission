@@ -18,8 +18,8 @@
       </div>
 
       <form action="" class="user-form">
+        <label for="email" class="user-form__label">이메일</label>
         <div class="input user-form__input">
-          <label for="email" class="user-form__label">이메일</label>
           <input
             type="email"
             id="email"
@@ -28,8 +28,8 @@
           />
           <!-- <span class="input--caption-red">잘못된 이메일입니다.</span> -->
         </div>
+        <label for="nickname" class="user-form__label">닉네임</label>
         <div class="input user-form__input">
-          <label for="nickname" class="user-form__label">닉네임</label>
           <input
             type="text"
             id="nickname"
@@ -37,38 +37,31 @@
             placeholder="닉네임을 입력해주세요"
           />
         </div>
-        <div class="input user-form__input password user-form__password">
-          <label for="password" class="user-form__label">비밀번호</label>
+        <label for="password" class="user-form__label">비밀번호</label>
+        <div class="input user-form__input">
           <input
             type="password"
             id="password"
             class="input-primary user-form__input-field"
             placeholder="비밀번호를 입력해주세요"
           />
-          <!-- <i>
-            <img src="../public/assets/icon/eye.svg" alt="비밀번호 보기" />
-          </i> -->
-          <i>
-            <img src="../public/assets/icon/eye-off.svg" alt="비밀번호 보기" />
-          </i>
-
+          <button type="button" class="toggle-password-btn">
+            <i class="eye-off"></i>
+          </button>
           <!-- <span class="input--caption-olive">8자 이상 입력해주세요.</span> -->
         </div>
 
-        <div class="input user-form__input password user-form__password">
-          <label for="password" class="user-form__label">비밀번호 확인</label>
+        <label for="password" class="user-form__label">비밀번호 확인</label>
+        <div class="input user-form__input">
           <input
             type="password"
             id="password"
             class="input-primary user-form__input-field"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
           />
-          <!-- <i>
-            <img src="../public/assets/icon/eye.svg" alt="비밀번호 보기" />
-          </i> -->
-          <i>
-            <img src="../public/assets/icon/eye-off.svg" alt="비밀번호 보기" />
-          </i>
+          <button type="button" class="toggle-password-btn">
+            <i class="eye-off"></i>
+          </button>
           <!-- <span class="input--caption-red">비밀번호가 일치하지 않습니다.</span> -->
         </div>
         <button class="btn user-form__btn">회원가입</button>

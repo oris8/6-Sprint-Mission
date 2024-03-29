@@ -42,16 +42,14 @@
   margin-bottom: 24px;
 }
 
-.user-form__input:focus {
-  outline: #3692ff solid 1.5px;
+.user-form__input-field {
+  position: relative;
 }
 
 .user-form i {
   position: absolute;
-  /* top: 53.5px;
-  right: 16px; */
-  top: 0;
-  right: 0;
+  top: 16px;
+  right: 16px;
 }
 
 .user-form__btn:active {
@@ -106,14 +104,9 @@
 
 /* mobile */
 @media screen and (max-width: 767px) {
-  * {
-    font-size: 8px;
-  }
-
   .form-container {
-    width: 100%;
     max-width: 400px;
-    margin: 24px 16px auto 16px;
+    padding: 24px 16px 0 16px;
   }
 
   .form-container__logo {
@@ -127,7 +120,7 @@
   }
 
   .user-form,
-  .user-form__input,
+  .user-form__input-field,
   .user-form__btn,
   .social-login {
     width: 100%;
@@ -140,9 +133,5 @@
 
   .user-form__input {
     margin-bottom: 16px;
-  }
-
-  .user-form i {
-    top: 45.5px;
   }
 }
