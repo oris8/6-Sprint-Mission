@@ -11,39 +11,40 @@
   </head>
   <body>
     <div class="form-container">
-      <div class="form-container__logo">
+      <div class="form-container__header">
         <a href="../index.html">
           <img src="../public/assets/img/panda-logo.svg" alt="판다마켓"
         /></a>
       </div>
 
-      <form action="" class="user-form">
-        <label for="email" class="user-form__label">이메일</label>
-        <div class="input user-form__input">
-          <input
-            type="email"
-            id="email"
-            class="input-primary user-form__input-field"
-            placeholder="이메일을 입력해주세요"
-          />
-          <!-- <span class="input--caption-red">잘못된 이메일입니다.</span> -->
+      <form action="../items/items.html" class="user-form">
+        <div class="user-form__group">
+          <label for="email" class="user-form__label">이메일</label>
+          <div class="input user-form__input">
+            <input
+              type="email"
+              id="email"
+              class="input-primary user-form__input-field"
+              placeholder="이메일을 입력해주세요"
+            />
+          </div>
         </div>
 
-        <label for="password" class="user-form__label">비밀번호</label>
-        <div class="input user-form__input">
-          <input
-            type="password"
-            id="password"
-            class="input-primary user-form__input-field"
-            placeholder="비밀번호를 입력해주세요"
-          />
-          <button type="button" class="toggle-password-btn">
-            <i class="eye-off"></i>
-          </button>
-          <!-- btn click되면 i태그의 class명을 바꾸고, input-password의 type 프로퍼티를 text로 바꿔줌 (이런식으로 토글링) -->
-          <!-- <span class="input--caption-red">비밀번호가 일치하지 않습니다.</span> -->
-          <!-- <span class="input--caption-olive">8자 이상 입력해주세요.</span> -->
+        <div class="user-form__group">
+          <label for="password" class="user-form__label">비밀번호</label>
+          <div class="input user-form__input">
+            <input
+              type="password"
+              id="password"
+              class="input-primary user-form__input-field"
+              placeholder="비밀번호를 입력해주세요"
+            />
+            <button type="button" class="toggle-password-btn">
+              <i class="icon-eye-off"></i>
+            </button>
+          </div>
         </div>
+
         <button class="btn user-form__btn">로그인</button>
       </form>
 

@@ -5,13 +5,13 @@
 }
 
 /* logo */
-.form-container__logo {
+.form-container__header {
   display: flex;
   justify-content: center;
   margin: 60px 0 40px 0;
 }
 
-.form-container__logo img {
+.form-container__header img {
   width: 396px;
   height: 132px;
 }
@@ -46,10 +46,11 @@
   position: relative;
 }
 
-.user-form i {
+.user-form .toggle-password-btn {
   position: absolute;
   top: 16px;
   right: 16px;
+  background: transparent;
 }
 
 .user-form__btn:active {
