@@ -104,9 +104,32 @@ input::placeholder {
   background-image: url(../public/assets/icon/toggle.svg);
 }
 
+/* input 자동완성 시 자동 스타일 적용 초기화 */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-cool-gray-100) inset;
+  box-shadow: 0 0 0px 1000px var(--color-cool-gray-100) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+  -webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-cool-gray-100) inset;
+  box-shadow: 0 0 0px 1000px var(--color-cool-gray-100) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* input option */
 
-i.icon--eye {
+i.icon-eye {
+  display: block;
   width: 24px;
   height: 24px;
   background-image: url(../public/assets/icon/eye.svg);
@@ -116,7 +139,8 @@ i.icon--eye {
   cursor: pointer;
 }
 
-i.icon--eye-off {
+i.icon-eye-off {
+  display: block;
   width: 24px;
   height: 24px;
   background-image: url(../public/assets/icon/eye-off.svg);
@@ -126,15 +150,19 @@ i.icon--eye-off {
   cursor: pointer;
 }
 
+.input--border-primary {
+  border: 1.5px solid var(--color-blue);
+}
+
 .input--border-warning {
-  border: 1px solid var(--color-red);
+  border: 1.5px solid var(--color-red);
 }
 
 .input--caption-warning {
   display: block;
   margin-top: 8px;
   margin-left: 16px;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 15px;
   color: var(--color-red);
 }

@@ -15,3 +15,7 @@
   --color-cool-gray-600: #4b5563;
   --color-cool-gray-800: #1f2937;
 }
+
+button i {
+  pointer-events: none;
+}
