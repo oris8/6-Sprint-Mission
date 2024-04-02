@@ -17,6 +17,9 @@
 }
 
 /* form */
+.user-form__group {
+  margin-bottom: 24px;
+}
 
 .user-form__btn {
   width: 640px;
@@ -39,7 +42,6 @@
 
 .user-form__input-field {
   width: 640px;
-  margin-bottom: 24px;
 }
 
 .user-form__input-field {
