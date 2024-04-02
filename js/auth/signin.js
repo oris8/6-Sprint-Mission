@@ -16,7 +16,7 @@ document.addEventListener("click", (e) => {
 const $button = document.querySelector(".user-form__btn");
 disableButton($button);
 
-document.addEventListener("keyup", (e) => {
+document.addEventListener("focusout", (e) => {
   const target = e.target;
   if (e.target.id === "email") isEmailValidation(target);
   if (e.target.id === "password") isPasswordValidation(target);
