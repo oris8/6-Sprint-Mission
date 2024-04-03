@@ -6,7 +6,7 @@ import {
   checkPasswordMatch,
   isFormValidation,
 } from "../validation/controller.js";
-import { enableButton, disableButton } from "../utils/toggleButtonState.js";
+import { enableButton, disableButton } from "../utils/buttonStateHandler.js";
 
 // 비밀번호 보이기/숨기기 토글
 document.addEventListener("click", (e) => {

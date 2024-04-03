@@ -1,4 +1,7 @@
-import { showErrorInput, removeErrorInput } from "./ui.js";
+import {
+  showErrorInput,
+  removeErrorInput,
+} from "../utils/inputErrorMsgHandler.js";
 
 function checkPasswordRegex(value) {
   return /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,20}$/.test(
@@ -6,19 +9,20 @@ function checkPasswordRegex(value) {
   );
 }
 
-function isPasswordValidation(target) {
-  if (!target.value) return showErrorInput(target, "비밀번호를 입력해주세요");
-  // if (!checkPasswordRegex(target.value))
+function isPasswordValidation($password) {
+  if (!$password.value)
+    return showErrorInput($password, "비밀번호를 입력해주세요");
+  // if (!checkPasswordRegex($password.value))
   //   return showErrorInput(
-  //     target,
+  //     $password,
   //     "8-20자 사이의 영어, 숫자, 특수문자를 입력해주세요"
   //   );
-  if (target.value.length < 8)
-    return showErrorInput(target, "비밀번호를 8자 이상 입력해주세요");
-  else removeErrorInput(target);
+  if ($password.value.length < 8)
+    return showErrorInput($password, "비밀번호를 8자 이상 입력해주세요");
+  else removeErrorInput($password);
 
-  target.classList.remove("input--border-warning");
-  target.classList.add("input--border-primary");
+  $password.classList.remove("input--border-warning");
+  $password.classList.add("input--border-primary");
 }
 
 function checkPasswordMatch() {
