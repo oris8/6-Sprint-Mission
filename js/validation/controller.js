@@ -5,8 +5,9 @@ import {
   checkPasswordMatch,
 } from "../validation/isPasswordValidation.js";
 
-const isFormValidation = () => {
-  const $inputs = document.querySelectorAll("input");
+const isFormValidation = (e) => {
+  const $form = e.target.form;
+  const $inputs = $form.querySelectorAll("input");
   let isValid = true;
 
   $inputs.forEach((input) => {
