@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import Button from "../components/Button";
+import Button from "../components/BaseButton";
 import WebpLoader from "../components/WebpLoader";
 import SectionDescription from "../components/SectionDescription";
 import MultiLineText from "../components/MultiLineText";

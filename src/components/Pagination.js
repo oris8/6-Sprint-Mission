@@ -5,6 +5,7 @@ import arrowRightIcon from "../assets/icon/arrow-right.svg";
 import arrowLeftIcon from "../assets/icon/arrow-left.svg";
 
 const Pagination = ({
+  className,
   currentPage,
   totalPages,
   goToPrevPage,
@@ -24,7 +25,7 @@ const Pagination = ({
   };
 
   return (
-    <StyledPagination className="pagination">
+    <StyledPagination className={className}>
       <button onClick={goToPrevPage} disabled={currentPage === 1}>
         <i className="arrow-left"></i>
       </button>

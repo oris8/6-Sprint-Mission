@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import heartIcon from "../assets/icon/heart.svg";
 import heartActiveIcon from "../assets/icon/heart-active.svg";
+import BaseIcon from "./BaseIcon";
 
-function Card({ item }) {
+function Card({ item, className }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const { name, price, favoriteCount, images } = item;
@@ -16,22 +17,20 @@ function Card({ item }) {
     setIsFavorite(!isFavorite);
   };
 
-  const getFavoriteIconClassName = isFavorite
-    ? "icon-heart-active"
-    : "icon-heart";
+  const getFavoriteIcon = isFavorite ? heartActiveIcon : heartIcon;
 
   return (
-    <StyledCard className="Card">
-      <img className="Card__img" src={previewImage} alt="상품 이미지" />
-      <p className="Card__name">{name}</p>
-      <p className="Card__price">{formattedPrice}</p>
-      <span className="Card__favorites">
-        <button className="Card__favorites-btn" onClick={handleFavoriteClick}>
-          <i className={getFavoriteIconClassName}></i>
+    <StyledCard className={className}>
+      <img src={previewImage} alt="상품 이미지" />
+      <p>{name}</p>
+      <p>{formattedPrice}</p>
+      <StyledFavoriteSection>
+        <button onClick={handleFavoriteClick}>
+          <BaseIcon src={getFavoriteIcon} />
         </button>
         {isFavorite ? favoriteCount + 1 : favoriteCount}
         {/* 서버에는 반영 x */}
-      </span>
+      </StyledFavoriteSection>
     </StyledCard>
   );
 }
@@ -40,9 +39,8 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
 
-  .Card__img {
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -50,28 +48,28 @@ const StyledCard = styled.div`
     margin: 16px 0;
   }
 
-  .Card__name {
+  p:first-of-type {
     font-weight: 500;
     font-size: 14px;
     color: #1f2937;
   }
 
-  .Card__price {
+  p:nth-of-type(2) {
     font-weight: 700;
     font-size: 16px;
     color: #1f2937;
   }
+`;
 
-  .Card__favorites {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-weight: 500;
-    font-size: 12px;
-    color: #4b5563;
-  }
+const StyledFavoriteSection = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #4b5563;
 
-  .Card__favorites-btn {
+  button {
     display: flex;
     width: 16px;
     height: 16px;
@@ -80,23 +78,10 @@ const StyledCard = styled.div`
     cursor: pointer;
   }
 
-  .icon-heart,
-  .icon-heart-active {
-    display: block;
+  i {
     width: 16px;
     height: 16px;
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    background-position: center;
     cursor: pointer;
-  }
-
-  .icon-heart {
-    background-image: url(${heartIcon});
-  }
-
-  .icon-heart-active {
-    background-image: url(${heartActiveIcon});
   }
 `;
 

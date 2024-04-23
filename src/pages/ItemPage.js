@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Card from "../components/Card";
-import Button from "../components/Button";
-import Searchbar from "../components/Searchbar";
+import BaseButton from "../components/BaseButton";
 import SortSelectBox from "../components/SortSelectBox";
 import Pagination from "../components/Pagination";
 
 import { getItems } from "../services/api";
 import useWindowSize from "../hooks/useWindowSize";
 import usePagination from "../hooks/usePagination";
+import ItemPageSearchInput from "../components/ItemPageSearchInput";
+import ItemPageBestSection from "../components/ItemPageBestSection";
 
 const BEST_ITEMS_LIMIT = {
   small: 1,
@@ -83,50 +84,41 @@ function ItemPage() {
 
   return (
     <>
-      <StyledDiv className="ItemPage">
-        <div className="ItemPage__best-section">
-          <span className="ItemPage__title">베스트 상품</span>
-          <div className="ItemPage__best-item-list">
-            {bestItems.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
-        <div className="ItemPage__section">
-          <div className="ItemPage__title-section">
-            <span className="ItemPage__title">판매중인 상품</span>
+      <StyledDiv>
+        <ItemPageBestSection bestItems={bestItems} />
+
+        <StyledItemPageSection>
+          <StyledItemTitleSection>
+            <span>판매중인 상품</span>
             <Link to="/additem">
-              <Button className="ItemPage__additem-btn" size="small">
-                상품 등록하기
-              </Button>
+              <StyledAddItemBtn size="small">상품 등록하기</StyledAddItemBtn>
             </Link>
-            <Searchbar
+
+            <StyledItemPageSearchInput
               placeholder="검색할 상품을 입력해주세요"
-              className="ItemPage__search-bar"
               value={searchValue}
               onChange={setSearchValue}
             />
-            <SortSelectBox
-              className="ItemPage__select-box"
+            <StyledSelectBox
               onClick={setOrder}
               order={order}
               size={screenSize === "small" ? "small" : "medium"}
-            ></SortSelectBox>
-          </div>
-          <div className="ItemPage__item-list">
+            ></StyledSelectBox>
+          </StyledItemTitleSection>
+          <div>
             {paginatedList.map((item) => (
-              <Card key={item.id} item={item} />
+              <StyledItemCard key={item.id} item={item} />
             ))}
           </div>
-        </div>
-        <Pagination
-          className="ItemPage__pagination"
+        </StyledItemPageSection>
+
+        <StyledPagination
           currentPage={currentPage}
           totalPages={totalPages}
           goToPrevPage={goToPrevPage}
           goToNextPage={goToNextPage}
           goToPage={goToPage}
-        ></Pagination>
+        ></StyledPagination>
       </StyledDiv>
     </>
   );
@@ -138,23 +130,37 @@ const StyledDiv = styled.div`
   padding: 17px 16px;
   margin-top: 70px;
   margin-bottom: 62px;
+`;
 
-  .ItemPage__best-section .ItemPage__title {
-    margin-bottom: 16px;
+const StyledItemPageSection = styled.div`
+  > div:nth-of-type(2) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  /* title-section */
-
-  .ItemPage__title-section {
-    display: grid;
-    grid-template-columns: 1fr calc(132px - 42px - 8px) 42px;
-    grid-template-areas:
-      "title btn btn"
-      "search search sort";
-    grid-gap: 8px;
+  @media screen and (min-width: 768px) {
+    > div:nth-of-type(2) {
+      gap: 16px;
+    }
   }
 
-  .ItemPage__title {
+  @media screen and (min-width: 1200px) {
+    > div:nth-of-type(2) {
+      gap: 24px;
+    }
+  }
+`;
+
+const StyledItemTitleSection = styled.div`
+  display: grid;
+  grid-template-columns: 1fr calc(132px - 42px - 8px) 42px;
+  grid-template-areas:
+    "title btn btn"
+    "search search sort";
+  grid-gap: 8px;
+
+  > span {
     grid-area: title;
     margin: auto 0;
     font-weight: 700;
@@ -162,123 +168,53 @@ const StyledDiv = styled.div`
     color: #111827;
   }
 
-  .ItemPage__additem-btn {
-    grid-area: btn;
-    width: 133px;
-    height: 42px;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr auto auto auto;
+    grid-template-areas: "title search btn sort";
+    grid-gap: 8px;
   }
+`;
 
-  .ItemPage__search-bar {
-    grid-area: search;
-  }
-
-  .ItemPage__search-bar input {
-    width: 100%;
-  }
-
-  .ItemPage__select-box {
-    grid-area: sort;
-  }
-
-  /* best-item-list */
-
-  .ItemPage__best-item-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-
-  /* item-list */
-
-  .ItemPage__item-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .ItemPage__item-list .Card {
-    width: calc(50% - 4px);
-    margin-right: 8px;
-  }
-
-  .ItemPage__item-list .Card:nth-child(2n) {
-    margin-right: 0;
-  }
-
-  /* pagination */
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-  }
+const StyledItemPageSearchInput = styled(ItemPageSearchInput)`
+  grid-area: search;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
-    .ItemPage__title-section {
-      grid-template-columns: 1fr auto auto auto;
-      grid-template-areas: "title search btn sort";
-      grid-gap: 8px;
-    }
-
-    .ItemPage__search-bar input {
-      width: 242px;
-    }
-
-    .ItemPage__best-item-list {
-      margin-bottom: 40px;
-    }
-
-    .ItemPage__best-item-list .Card {
-      width: calc(50% - 12px);
-      margin-right: 24px;
-    }
-
-    .ItemPage__best-item-list .Card:nth-child(2n) {
-      margin-right: 0;
-    }
-
-    .ItemPage__item-list .Card,
-    .ItemPage__item-list .Card:nth-child(2n) {
-      width: calc(33.3% - 12px);
-      margin-right: 16px;
-    }
-
-    .ItemPage__item-list .Card:nth-child(3n) {
-      margin-right: 0;
-    }
-
-    .ItemPage__title-section {
-      margin-bottom: 0;
-    }
+    width: 242px;
   }
 
   @media screen and (min-width: 1200px) {
-    .ItemPage__search-bar input {
-      width: 325px;
-    }
-
-    .ItemPage__best-item-list .Card,
-    .ItemPage__best-item-list .Card:nth-child(2n) {
-      width: calc(25% - 12px);
-      margin-right: 16px;
-    }
-
-    .ItemPage__best-item-list .Card:nth-child(4n) {
-      margin-right: 0;
-    }
-
-    .ItemPage__item-list .Card,
-    .ItemPage__item-list .Card:nth-child(2n),
-    .ItemPage__item-list .Card:nth-child(3n) {
-      /* 19.2px = 24(margin-right값) % 5(요소 개수) * 4(gap개수)  */
-      width: calc(20% - 19.2px);
-      margin-right: 24px;
-    }
-
-    .ItemPage__item-list .Card:nth-child(5n) {
-      margin-right: 0;
-    }
+    width: 325px;
   }
+`;
+
+const StyledAddItemBtn = styled(BaseButton)`
+  grid-area: btn;
+  width: 133px;
+  height: 42px;
+`;
+
+const StyledSelectBox = styled(SortSelectBox)`
+  grid-area: sort;
+`;
+
+const StyledItemCard = styled(Card)`
+  width: calc(50% - 4px);
+
+  @media screen and (min-width: 768px) {
+    width: calc(33.3% - 12px);
+  }
+  @media screen and (min-width: 1200px) {
+    /* 19.2px = 24(margin-right값) % 5(요소 개수) * 4(gap개수)  */
+    width: calc(20% - 19.2px);
+  }
+`;
+
+const StyledPagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 `;
 
 export default ItemPage;

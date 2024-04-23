@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Input } from "./Input";
-import Button from "./Button";
+import Button from "./BaseButton";
 
 import eyeIcon from "../assets/icon/eye.svg";
 import eyeOffIcon from "../assets/icon/eye-off.svg";

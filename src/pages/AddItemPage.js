@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import ItemFormGroup from "../components/ItemFormGroup";
-import Button from "../components/Button";
+import Button from "../components/BaseButton";
 import DeleteIconButton from "../components/DeleteIconButton";
 
 const TAG_LIMIT = 7;

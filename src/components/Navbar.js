@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-import Button from "./Button";
+import Button from "./BaseButton";
 
 import logo from "../assets/img/panda-logo.svg";
 import logoTypo from "../assets/img/panda-logo-typo.svg";
