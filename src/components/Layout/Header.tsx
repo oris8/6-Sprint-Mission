@@ -1,8 +1,10 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "@/components/NavLink";
 import BaseButton from "@/components/BaseButton";
+import { useAuth } from "@/contexts/AuthProvider";
 
 interface GNBNavLinkProps {
   href: string;
@@ -33,12 +35,14 @@ const GNBNavLink = ({ href, children }: GNBNavLinkProps) => {
 };
 
 const GNBButton = ({ children }: GNBButtonProps) => (
-  <BaseButton className="h-42 w-88 ml-auto">{children}</BaseButton>
+  <BaseButton className="ml-auto h-42 w-88">{children}</BaseButton>
 );
 
 function Header() {
+  const { user, logout } = useAuth();
+
   return (
-    <nav className="h-70 xl:px-200 fixed top-0 z-20 flex w-full items-center gap-8 border-b border-gray-200 bg-white px-16 md:px-24">
+    <nav className="fixed top-0 z-20 flex h-70 w-full items-center gap-8 border-b border-gray-200 bg-white px-16 md:px-24 xl:px-200">
       <Link href="/">
         <div className="hidden md:block lg:mr-20">
           <Image
@@ -61,9 +65,23 @@ function Header() {
       </div>
       <GNBNavLink href="/boards">자유게시판</GNBNavLink>
       <GNBNavLink href="/items">중고마켓</GNBNavLink>
-      <GNBButton>
-        <Link href="/login">로그인</Link>
-      </GNBButton>
+      {user ? (
+        <>
+          <Link href="/me" className="ml-auto">
+            <Image
+              src={user.image || "/images/img_default-profile.png"}
+              width={40}
+              height={40}
+              alt="profile-image"
+            />
+          </Link>
+          <BaseButton onClick={logout}>나가기</BaseButton>
+        </>
+      ) : (
+        <GNBButton>
+          <Link href="/login">로그인</Link>
+        </GNBButton>
+      )}
     </nav>
   );
 }

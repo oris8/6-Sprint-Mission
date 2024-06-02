@@ -86,6 +86,7 @@ const config: Config = {
       },
     },
   },
+  important: true,
   plugins: [require("@savvywombat/tailwindcss-grid-areas")],
 };
 export default config;
