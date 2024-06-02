@@ -1,0 +1,48 @@
+POST https://learn.codeit.kr/api/link-service/users
+Content-Type: application/json
+
+{
+    "name" : "user",
+    "email" : "user@example.com",
+    "password" : "p@assword"
+}
+
+# JSON 작성 규칙상 마지막에 , 를 추가해서는 안됩니당
+
+
+POST https://learn.codeit.kr/api/link-service/auth/login
+Content-Type: application/json
+
+{
+    "email" : "user@example.com",
+    "password" : "p@assword"
+}
+
+# axios 요청 보낼때 WithCredentails: true 설정해주기, 보내고 받는쪽의 도메인이 다를떄 쿠키 사용하려면 필요한 옵션
+# 쿠키는 브라우저가 알아서 저장
+# axios.post(
+#   '/auth/login',
+#   { email: 'sunny@sundaymorning.kr', password: 't3st!' },
+#   { withCredentials: true }, // 인스턴스로 설정해주면 편함
+# );
+# fetch('https://learn.codeit.kr/api/link-service/auth/login', {
+#   method: 'POST',
+#   headers: { 'Content-Type': 'application/json' },
+#   body: JSON.stringify({ email: 'sunny@sundaymorning.kr', password: 't3st!' }),
+#   credentials: 'include'  // CrossOrigin일때도 쿠키 사용
+# });
+
+
+contexts/AuthProvider.js
+
+
+POST https://learn.codeit.kr/api/link-service/auth/token/refresh
+Cookie: refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NSIsImlhdCI6MTcxNzIyNDE2MCwiZXhwIjoxNzE3ODI4OTYwfQ.2mSFUwPRRpv0h7JiktsnCcLUJVLTH2x3YW0VRrj3mPo; Path=/api/link-service/auth; HttpOnly; Secure; SameSite=None
+
+
+
+POST https://learn.codeit.kr/api/link-service/auth/logout
+Cookie: access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NSIsImlhdCI6MTcxNzIyNDE2MCwiZXhwIjoxNzE3MjI3NzYwfQ.W-nHFRTPnhqmKB6ACJGIubvvh8Yh79Nkp-cS-M-n354; Path=/api/link-service; HttpOnly; Secure; SameSite=None
+
+~~ 에 대해 알려줘
+모르는 정보라면 브라우징 기능을 사용하고, 참조한 출처의 링크도 함께 알려줘
